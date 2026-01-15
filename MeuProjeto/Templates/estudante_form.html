@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center">
+    <h2 class="mt-4">
+        Cadastrar Estudante
+    </h2>
+    <form method="post" class="row g-3">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">
+                Salvar
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
