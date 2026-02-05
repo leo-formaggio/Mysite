@@ -1,7 +1,7 @@
 
-# Django Escola — Sistema de Cadastro de Professores, Cursos e Estudantes
+# Django Escola — Sistema de Cadastro de Professores, Cursos e Estudantes com Registro e Login de usuário
 
-Esse é um site web desenvolvido em Django com o padrão MTV (Model-Template-View) que permite cadastrar e listar entidades de uma escola:
+Este projeto foi desenvolvido utilizando **Python** e **Django**, com o objetivo de consolidar os principais conceitos do framework na construção de uma aplicação web completa, organizada e funcional, com o padrão MTV (Model-Template-View) que permite ler atualizações do blog, registrar, fazer login, editar perfil e avatar, cadastrar e listar entidades de uma escola:
 
 🎓 Estudante
 👩‍🏫 Professor
@@ -13,7 +13,7 @@ Modelos de banco de dados para as três classes;
 
 Formulários para inserir registros no banco;
 
-Formulário de busca de estudantes;
+Formulário de busca de estudantes, professores e cursos;
 
 Templates com herança usando Bootstrap 5 para estilo básico e responsivo.
 
@@ -23,17 +23,38 @@ Este projeto foi construído com:
 
 - Python	≥ 3.8
 - Django	≥ 4.x
-- Bootstrap	5
+- Bootstrap	5 (estilização)
 - SQLite	Banco de dados padrão Django
 
 
+## Estrutura e Funcionalidades Implementadas
 
+### Autenticação e Permissões
+- Sistema de **login, logout e registro** integrado ao banco de dados.
+- Controle de acesso baseado em usuário autenticado.
+- Navbar dinâmica (Login/Registrar ocultos após autenticação).
+- Logout sem página própria, mantendo a navegação integrada à navbar.
 
-## Funcionalidades
+### Perfil de Usuário
+- Página de **detalhes do perfil**.
+- **Edição e exclusão** do perfil do usuário.
+- Implementação de **avatar com upload de imagem**.
+- Criação automática do profile vinculado ao usuário.
+- Tratamento de erros relacionados à inexistência de profile.
 
-- Cadastrar Estudante, Professor e Curso
-- Buscar estudantes por nome
-- Navegação com barra responsiva Bootstrap
+### Gestão de Entidades
+CRUD completo para:
+- **Estudantes**
+- **Professores**
+- **Cursos**
+
+Funcionalidades:
+- Listagem
+- Criação
+- Detalhes
+- Edição
+- Exclusão com página de confirmação
+
 ## Instalações
 
 1. Clonar Repositório:
@@ -73,56 +94,30 @@ python manage.py runserver
 ```
 
     
-## Navegação e Ordem de Testes
-
-Após rodar o servidor (por padrão em http://127.0.0.1:8000/
-), siga a ordem abaixo para testar todas as funcionalidades:
-
-1. Acessar a página Inicial:
-
-URL: http://127.0.0.1:8000/
-
-Verifique que o menu de navegação aparece com links para todos os forms.
-
-2. Cadastrar um Estudante:
-
-URL: http://127.0.0.1:8000/add_estudante/
-
-Preencha nome, sobrenome e e-mail e clique em Salvar.
-
-3. Cadastrar um Professor:
-
-URL: http://127.0.0.1:8000/add_professor/
-
-Preencha nome, sobrenome e e-mail e clique em Salvar.
-
-4. Cadastrar um Curso:
-
-URL: http://127.0.0.1:8000/add_curso/
-
-Digite nome do curso e turma, depois Salvar.
-
-5. Buscar um Estudante:
-
-URL: http://127.0.0.1:8000/buscar/?q=
-
-Use o campo de busca para pesquisar o nome do aluno.
-
-6. Listar os Estudantes:
-
-URL: http://127.0.0.1:8000/estudantes/
-
-7. Listar os Professores:
-
-URL: http://127.0.0.1:8000/professor/
-
-8. Listar os Cursos:
-
-URL: http://127.0.0.1:8000/curso/
 ## Arquitetura e Templates
 
 ### Herança de Templates
 O template base (base.html) contém a estrutura principal de navegação e footer, e é estendido pelos outros templates para reutilização de layout.
+
+### Organização de Templates
+- Templates organizados em **subpastas por entidade**.
+- Uso de `base.html` para layout padrão.
+- Reaproveitamento de componentes (navbar, formulários, etc.).
+
+### Formulários
+- Uso de `ModelForm`.
+- Integração com Bootstrap para alinhamento e responsividade.
+- Upload de arquivos com `enctype="multipart/form-data"`.
+
+### Boas Práticas Aplicadas
+- Uso correto de `pk` nas rotas.
+- Views protegidas com autenticação.
+- Separação clara entre models, views, urls e forms.
+- Tratamento de erros comuns do Django (`RelatedObjectDoesNotExist`, `OperationalError`).
+
+## Evolução do Projeto
+Ao longo do desenvolvimento, o projeto evoluiu de páginas estáticas para um sistema dinâmico com autenticação, perfis personalizados e CRUD completo, seguindo boas práticas do Django e preparando a base para futuras expansões.
+
 
 ### Bootstrap 5
 O estilo visual é feito com classes Bootstrap para responsividade e aparência básica.

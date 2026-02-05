@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container text-center">
     <h2 class="mt-4">
-        Cadastrar Professor
+        Adicionar Estudante
     </h2>
     <form method="post" class="row g-3">
         {% csrf_token %}
@@ -13,6 +13,7 @@
             <button type="submit" class="btn btn-success">
                 Salvar
             </button>
+            <a href="{% url 'lista_estudantes' %}" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
 </div>

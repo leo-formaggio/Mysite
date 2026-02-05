@@ -2,21 +2,22 @@
 {% block content %}
 <div class="container text-center">
     <h2>
-        Busca de Estudantes
+        Buscar Nome
     </h2>
     <p>
         Pesquisa por: "{{ termo }}"
     </p>
     <ul class="list-unstyled">
-        {% for e in estudantes %}
+        {% for p in professores %}
             <li>
-               Nome: {{ e.nome }} {{ e.sobrenome }} - {{ e.email }}
+               Nome: {{ p.nome }} {{ p.sobrenome }} - {{ p.email }}
             </li>
         {% empty %}
             <li>
-                Nenhum aluno encontrado.
+                Não encontrado.
             </li>
         {% endfor %}
     </ul>
+    <a href="{% url 'lista_professor' %}" class="btn btn-secondary">Voltar</a>
 </div>
 {% endblock %}

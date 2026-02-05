@@ -1,17 +1,37 @@
-
+from .views import home, registrar, profile, edit_profile, profile_delete, about, pages, page_detail, page_create, edit_page, delete_page, lista_estudantes, add_estudante, edit_estudante, delete_estudante, detalhe_estudante,lista_professor, add_professor, detalhe_professor, edit_professor, delete_professor, buscar_professor, lista_curso, add_curso, edit_curso, delete_curso, detalhe_curso, buscar_curso, buscar_estudante
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
-from .views import home, lista_estudantes, add_estudante, detalhe_estudante, lista_professor, add_professor, detalhe_professor, lista_curso, add_curso, detalhe_curso, buscar_estudante
 
 urlpatterns = [
     path('', home, name='home'),
+    path('register/', registrar, name='register'),
+    path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('profile/', profile, name='profile'),
+    path('profile/edit/', edit_profile, name='edit_profile'),
+    path('profile/delete/', profile_delete, name='delete_profile'),
+    path('about/', about, name='about'),
+    path('pages/', pages, name='pages'),
+    path('pages/<int:pk>/', page_detail, name='page_detail'),
+    path('pages/create/', page_create, name='page_create'),
+    path('pages/edit/<int:pk>/', edit_page, name='page_edit'),
+    path('pages/delete/<int:pk>/', delete_page, name='page_delete'),
     path('estudantes/', lista_estudantes, name='lista_estudantes'),
     path('add_estudante/', add_estudante, name='add_estudante'),
+    path('estudantes/edit/<int:pk>/', edit_estudante, name='estudante_edit'),
+    path('estudantes/delete/<int:pk>/', delete_estudante, name='estudante_delete'),
     path('estudantes/<int:pk>/', detalhe_estudante, name='detalhe_estudante'),
     path('professor/', lista_professor, name='lista_professor'),
     path('add_professor/', add_professor, name='add_professor'),
+    path('professor/edit/<int:pk>/', edit_professor, name='professor_edit'),
+    path('professor/delete/<int:pk>/', delete_professor, name='professor_delete'),
     path('professor/<int:pk>/', detalhe_professor, name='detalhe_professor'),
+    path('buscar_professor/', buscar_professor, name='buscar_professor'),
     path('curso/', lista_curso, name='lista_curso'),
     path('add_curso/', add_curso, name='add_curso'),
+    path('curso/edit/<int:pk>/', edit_curso, name='curso_edit'),
+    path('curso/delete/<int:pk>/', delete_curso, name='curso_delete'),
     path('curso/<int:pk>/', detalhe_curso, name='detalhe_curso'),
+    path('buscar_curso/', buscar_curso, name='buscar_curso'),
     path('buscar/', buscar_estudante, name='buscar_estudante'),
 ]

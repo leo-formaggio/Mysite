@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="m-4 text-center">
+    <h2>Excluir página</h2>
+    <p>
+        Tem certeza que deseja excluir 
+        <strong>{{ pagina.titulo }}</strong>?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">
+            Confirmar
+        </button>
+        <a href="{% url 'pages' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

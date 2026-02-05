@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center">
+    <h2 class="mt-4 m-3">Editar Curso: {{ curso }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        {% if user.is_authenticated %}
+        <button type="submit" class="btn btn-success">
+            Salvar
+        </button>
+        {% endif %}
+        <a href="{% url 'lista_curso' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

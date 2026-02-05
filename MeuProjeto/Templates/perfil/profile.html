@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center">
+    <h1>Meu Perfil</h1>
+
+    {% if profile and profile.avatar %}
+        <img
+            src="{{ profile.avatar.url }}"
+            alt="Avatar"
+            width="150"
+            height="150"
+            class="rounded-circle mb-3"
+        >
+    {% else %}
+        <div class="mb-3 text-muted">
+            Sem avatar
+        </div>
+    {% endif %}
+
+    <p><strong>Usuário:</strong> {{ user_profile.username }}</p>
+    <p><strong>Nome:</strong> {{ user_profile.first_name }} {{ user_profile.last_name }}</p>
+    <p><strong>Email:</strong> {{ user_profile.email }}</p>
+
+    <a href="{% url 'edit_profile' %}" class="btn btn-warning btn-sm ms-2">
+        Editar
+    </a>
+    <a href="{% url 'delete_profile' %}" class="btn btn-danger btn-sm ms-2">
+        Deletar
+    </a>
+</div>
+
+{% endblock %}
